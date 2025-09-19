@@ -9,25 +9,25 @@ import { PresupuestoService } from 'src/app/services/presupuesto.service';
 })
 export class IngresarPresupuestoComponent implements OnInit {
   cantidad: number;
-  cantidadCorrecta: boolean;
+  cantidadInCorrecta: boolean;
   constructor(
     private _presupuestoService: PresupuestoService,
     private router: Router
   ) {
     this.cantidad = 0;
-    this.cantidadCorrecta = false;
+    this.cantidadInCorrecta = false;
   }
 
   ngOnInit(): void {}
 
   agregar() {
     if (this.cantidad > 0) {
-      this.cantidadCorrecta = false;
+      this.cantidadInCorrecta = false;
       this._presupuestoService.presupuesto = this.cantidad;
       this._presupuestoService.restante = this.cantidad;
       this.router.navigate(['/gastos']);
     } else {
-      this.cantidadCorrecta = true;
+      this.cantidadInCorrecta = true;
     }
   }
 }
